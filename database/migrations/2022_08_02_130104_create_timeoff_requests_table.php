@@ -26,7 +26,7 @@ return new class extends Migration
                 'request',
                 'rejected',
                 'approved',
-            ])->default('paid');
+            ])->default('request');
             $table->text('note');
             $table->foreignUuid('approval_employee_id')->nullable()->references('id')->on('employees');
             $table->text('note_reject')->nullable();
