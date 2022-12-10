@@ -6,6 +6,7 @@ use SaltEmployeeTimeoff\Controllers\ApiSaltResourcesController;
 // use SaltEmployeeTimeoff\Controllers\ApiNestedResourcesController;
 
 use SaltEmployeeTimeoff\Controllers\TimeoffsController;
+use SaltEmployeeTimeoff\Controllers\TimeoffEmployeesController;
 
 $version = config('app.API_VERSION', 'v1');
 
@@ -64,27 +65,27 @@ Route::middleware(['api'])
 
 
     // API: TIMEOFF EMPLOYEES
-    Route::get("timeoff_employees", [ReligionsController::class, 'index'])->middleware(['auth:api']); // get entire collection
-    Route::post("timeoff_employees", [ReligionsController::class, 'store'])->middleware(['auth:api']); // create new collection
+    Route::get("timeoff_employees", [TimeoffEmployeesController::class, 'index'])->middleware(['auth:api']); // get entire collection
+    Route::post("timeoff_employees", [TimeoffEmployeesController::class, 'store'])->middleware(['auth:api']); // create new collection
 
-    Route::get("timeoff_employees/trash", [ReligionsController::class, 'trash'])->middleware(['auth:api']); // trash of collection
+    Route::get("timeoff_employees/trash", [TimeoffEmployeesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
 
-    Route::post("timeoff_employees/import", [ReligionsController::class, 'import'])->middleware(['auth:api']); // import collection from external
-    Route::post("timeoff_employees/export", [ReligionsController::class, 'export'])->middleware(['auth:api']); // export entire collection
-    Route::get("timeoff_employees/report", [ReligionsController::class, 'report'])->middleware(['auth:api']); // report collection
+    Route::post("timeoff_employees/import", [TimeoffEmployeesController::class, 'import'])->middleware(['auth:api']); // import collection from external
+    Route::post("timeoff_employees/export", [TimeoffEmployeesController::class, 'export'])->middleware(['auth:api']); // export entire collection
+    Route::get("timeoff_employees/report", [TimeoffEmployeesController::class, 'report'])->middleware(['auth:api']); // report collection
 
-    Route::get("timeoff_employees/{id}/trashed", [ReligionsController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
+    Route::get("timeoff_employees/{id}/trashed", [TimeoffEmployeesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
 
     // RESTORE data by ID (id), selected IDs (selected), and All data (all)
-    Route::post("timeoff_employees/{id}/restore", [ReligionsController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
+    Route::post("timeoff_employees/{id}/restore", [TimeoffEmployeesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
 
     // DELETE data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("timeoff_employees/{id}/delete", [ReligionsController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
+    Route::delete("timeoff_employees/{id}/delete", [TimeoffEmployeesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
 
-    Route::get("timeoff_employees/{id}", [ReligionsController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
-    Route::put("timeoff_employees/{id}", [ReligionsController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
-    Route::patch("timeoff_employees/{id}", [ReligionsController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
+    Route::get("timeoff_employees/{id}", [TimeoffEmployeesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
+    Route::put("timeoff_employees/{id}", [TimeoffEmployeesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
+    Route::patch("timeoff_employees/{id}", [TimeoffEmployeesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("timeoff_employees/{id}", [ReligionsController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
+    Route::delete("timeoff_employees/{id}", [TimeoffEmployeesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
 
 });
